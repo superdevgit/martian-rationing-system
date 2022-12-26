@@ -1,0 +1,39 @@
+{{define "content"}}
+<div class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <label>Add Ration</label>
+                <span style="color: red" id="err"></span>
+                <form method="post" action="/add-ration">
+                    <div class="form-group">
+                        <select id="packetType" name="packet_type" class="form-control">
+                            <option value="">Packet Type</option>
+                            <option value="F">Food</option>
+                            <option value="W">Water</option>
+                        </select>
+                    </div>
+                    <div class="foodContent" style="display: none;">
+                        <div class="form-group">
+                            <input class="form-control" id="packetContent" type="text" name="content" value="" placeholder="Packet Content">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="calories" type="text" name="calories" value="" placeholder="Calories">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="date" id="expiryDate" name="expiry_date" value="" placeholder="Expiry Date">
+                        </div>
+                    </div>
+
+                    <div class="form-group waterContent" style="display: none;">
+                        <input class="form-control" id="litre" type="text" name="litre" value="" placeholder="Quantity in Litres">
+                    </div>
+                    <div class="form-group">
+                        <input id="submit" type="submit" value="Add" class="btn btn-success">
+                    </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}

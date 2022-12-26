@@ -1,0 +1,10 @@
+{
+    "GOPORT": "8000",
+    "ELOGFILE": "elog.txt",
+    "DOMAINNAME" : "https://localhost",
+    "db_user" : "YOUR_USER",
+    "db_password" : "YOUR_PASSWORD",
+    "db_host" : "YOUR_DB_HOST:PORT",
+    "db": "martian_ration",
+    "TYPE": "mysql"
+}

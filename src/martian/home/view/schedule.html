@@ -1,0 +1,61 @@
+{{define "content"}}
+<div class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>Schedule</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <th>Schedule Date</th>
+                        <th>Packet Id</th>
+                        <th>Packet Type</th>
+                        <th>Packet Content</th>
+                        <th>Calories</th>
+                        <th>Expiry Date</th>
+                        <th>Quantity in Litres</th>
+                    </thead>
+                    <tbody>
+                    {{ range index .Results }}
+                        {{ $date := .ScheduleDate }}
+                        {{ $row := .TotalRow }}
+                        {{ range $idx, $food := .Foods }}
+                        <tr>
+                            {{ if (eq $idx 0) }}
+                                <td class="align-middle" rowspan="{{ $row }}">{{$date}}</td>
+                            {{end}}
+                            <td>{{$food.PacketType}}{{$food.Id}}</td>
+                            {{ if (eq $food.PacketType "F") }}
+                                <td>Food</td>
+                            {{else}}
+                                <td>Water</td>
+                            {{end}}
+                            <td>{{$food.Content}}</td>
+                            <td>{{$food.Calories}}</td>
+                            <td>{{$food.ExpiryDate.String}}</td>
+                            <td>-</td>
+                        </tr>
+                        {{ end }}
+
+                        {{ range $water := .Water }}
+                        <tr>
+                            <td>{{$water.PacketType}}{{$water.Id}}</td>
+                            {{ if (eq $water.PacketType "F") }}
+                                <td>Food</td>
+                            {{else}}
+                                <td>Water</td>
+                            {{end}}
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>{{$water.Litre}}</td>
+                        </tr>
+                        {{ end }}
+                    {{ end }}
+                    </tbody>
+                </table>
+                <h6><b>Number of days you can survive with current inventory : {{ .Day }}</b></h6>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}

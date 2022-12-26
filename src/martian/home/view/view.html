@@ -1,0 +1,33 @@
+{{define "content"}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <p>View Inventory</p>
+                <table class="table">
+                    <thead>
+                        <th>Id</th>
+                        <th>Packet Type</th>
+                        <th>Packet Content</th>
+                        <th>Calories</th>
+                        <th>Expiry Date</th>
+                        <th>Quantity in Litres</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody>
+                        {{ range index . 0 }}
+                        <tr>
+                            <td>{{.Id}}</td>
+                            <td>{{.PacketType}}</td>
+                            <td>{{.Content}}</td>
+                            <td>{{.Calories}}</td>
+                            <td>{{.ExpiryDate.String}}</td>
+                            <td>{{.Litre}}</td>
+                            <td><a href="/delete?id={{.Id}}">Delete</a></td>
+                        </tr>
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{{end}}
